@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCM2026-2629276</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #3C9Bc9, #76CBB4, #FC757B);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: textShine 3s linear infinite;
+        }
+
+        @keyframes textShine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .hero-pattern {
+            background-color: #ffffff;
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .nav-link {
+            position: relative;
+            color: #475569;
+            transition: all 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3C9Bc9;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: #3C9Bc9;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-slate-900 font-sans leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="text-2xl font-bold flex items-center gap-3">
+                    <div
+                        class="bg-[#3C9Bc9] text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-blue-100">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <span class="tracking-tight text-slate-800">MCM2026-<span
+                            class="text-[#3C9Bc9]">2629276</span></span>
+                </div>
+                <div class="hidden md:flex space-x-10 text-sm font-semibold uppercase tracking-wider">
+                    <a href="#summary" class="nav-link">Summary</a>
+                    <a href="#model" class="nav-link">The Model</a>
+                    <a href="#paper-scenarios" class="nav-link">Profiles</a>
+                    <a href="#scenarios" class="nav-link">Stress Tests</a>
+                    <a href="#data" class="nav-link">Gallery</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-pattern pt-24 pb-32 border-b border-slate-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div
+                class="inline-flex items-center gap-2 bg-blue-50 text-[#3C9Bc9] px-4 py-2 rounded-full text-sm font-bold mb-8 border border-blue-100 animate-bounce">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-[#3C9Bc9]"></span>
+                </span>
+                MCM/ICM 2026 | Problem A
+            </div>
+            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight mb-8 leading-none">
+                Predicting the <br><span class="gradient-text">Invisible Drain</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto mb-16 leading-relaxed">
+                A mechanistic framework coupling <strong>State-of-Charge (SOC)</strong> with <strong>Thermal
+                    Dynamics</strong> to solve the mystery of battery endurance.
+            </p>
+
+            <!-- Key Findings / Keywords -->
+            <div id="summary" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-5xl mx-auto mb-16">
+                <div class="glass-card p-6 rounded-3xl shadow-xl transition hover:scale-105">
+                    <div class="text-3xl font-bold text-[#3C9Bc9] mb-1">71.2h</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-400 font-bold">Idle TTE</div>
+                </div>
+                <div class="glass-card p-6 rounded-3xl shadow-xl transition hover:scale-105">
+                    <div class="text-3xl font-bold text-[#76CBB4] mb-1">3.2h</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-400 font-bold">Gaming TTE</div>
+                </div>
+                <div class="glass-card p-6 rounded-3xl shadow-xl transition hover:scale-105">
+                    <div class="text-3xl font-bold text-[#F88455] mb-1">98%</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-400 font-bold">Model Accuracy</div>
+                </div>
+                <div class="glass-card p-6 rounded-3xl shadow-xl transition hover:scale-105">
+                    <div class="text-3xl font-bold text-[#FC757B] mb-1">ODE</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-400 font-bold">Coupled Solver</div>
+                </div>
+            </div>
+            <a href="#simulations"
+                class="bg-[#3C9Bc9] text-white px-10 py-5 rounded-2xl font-bold hover:bg-[#2d7ba5] transition-all shadow-xl hover:shadow-blue-100">
+                Watch Live Simulation <i class="fas fa-play ml-2 text-[#FFE59B]"></i>
+            </a>
+        </div>
+
+        <!-- Abstract Decoration -->
+        <div
+            class="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-400/10 rounded-full blur-[120px] -z-10">
+        </div>
+    </header>
+
+    <main class="py-24 space-y-40">
+
+        <!-- Technical Model -->
+        <section id="model" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-20 items-center">
+                <div class="lg:w-1/2">
+                    <h5 class="text-[#3C9Bc9] font-bold uppercase tracking-widest text-sm mb-4">The Methodology</h5>
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-8 text-slate-900">How we model the <br>energy
+                        flow.</h2>
+                    <p class="text-lg text-slate-600 mb-10 leading-relaxed">
+                        Batteries aren't just percentages; they are complex chemical systems. Our model decomposes the
+                        smartphone into <strong>modular subsystems</strong>, calculating the Joule heating and current
+                        drain through a coupled ODE loop.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
+                            <i class="fas fa-microchip text-2xl text-[#76CBB4] mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Hardware Decomposition</h4>
+                                <p class="text-slate-500 text-sm">Screen (brightness-aware), Processor
+                                    (utilization-coupled), Modem, and Thermal modules.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
+                            <i class="fas fa-infinity text-2xl text-[#3C9Bc9] mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Thermal Feedback Loop</h4>
+                                <p class="text-slate-500 text-sm">Accounts for internal resistance increases as the
+                                    device gets hotter durring intensive tasks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <div
+                        class="bg-blue-50/50 rounded-[3rem] p-8 md:p-12 text-slate-900 border border-blue-100 shadow-xl">
+                        <h3 class="text-xl font-bold mb-8 text-[#3C9Bc9] flex items-center gap-2">
+                            <i class="fas fa-square-root-alt"></i> Governing ODEs
+                        </h3>
+                        <div
+                            class="space-y-12 bg-white/80 p-6 md:p-10 rounded-2xl font-mono text-sm md:text-lg border border-blue-50 shadow-sm">
+                            <div class="text-center">
+                                <span
+                                    class="text-[#3C9Bc9] text-xs block mb-3 font-sans font-bold uppercase tracking-tighter">STATE
+                                    OF CHARGE DECAY</span>
+                                $$ \frac{ds}{dt} = -\frac{P_{total}(t, T)}{V_{cell} \cdot C_{nom}} $$
+                            </div>
+                            <div class="text-center">
+                                <span
+                                    class="text-[#FC757B] text-xs block mb-3 font-sans font-bold uppercase tracking-tighter">THERMAL
+                                    EVOLUTION</span>
+                                $$ m C_p \frac{dT}{dt} = P_{total} - \frac{T - T_{amb}}{R_{th}} $$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Simulations -->
+        <section id="simulations" class="bg-blue-50/30 py-32 overflow-hidden relative border-y border-blue-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <h5 class="text-[#3C9Bc9] font-bold uppercase tracking-widest text-sm mb-4">Live Analysis</h5>
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-8 capitalize text-slate-900">Real-time behavior
+                        simulations.</h2>
+                    <p class="text-slate-600 text-lg">Witness how the SOC (State-of-Charge) and Temperature interact
+                        under different stress levels.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="space-y-8">
+                        <div class="bg-white rounded-[2.5rem] p-4 md:p-8 border border-slate-100 shadow-xl">
+                            <div
+                                class="overflow-hidden rounded-2xl mb-6 bg-slate-50 flex items-center justify-center h-[500px]">
+                                <img src="img/live_soc_temp.gif" alt="SOC and Temp Simulation"
+                                    class="max-w-full max-h-full object-contain">
+                            </div>
+                            <h4 class="text-2xl font-bold mb-3 text-[#3C9Bc9]">Stress Level Comparison</h4>
+                            <p class="text-slate-500 text-sm">Direct comparison of device behavior under Normal
+                                (Browsing), Heavy (Navigation), and Extreme (Gaming) stress levels over a 6-hour period.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="bg-white rounded-[2.5rem] p-4 md:p-8 border border-slate-100 shadow-xl">
+                            <div
+                                class="overflow-hidden rounded-2xl mb-6 bg-slate-50 flex items-center justify-center h-[500px]">
+                                <img src="img/live_power.gif" alt="Subsystem Power Stack"
+                                    class="max-w-full max-h-full object-contain">
+                            </div>
+                            <h4 class="text-2xl font-bold mb-3 text-[#76CBB4]">Dynamic Load Distribution</h4>
+                            <p class="text-slate-500 text-sm">Real-time breakdown of power allocation across CPU,
+                                Screen, and Modem modules as the device transitions between different usage scenarios.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Abstract background shape -->
+            <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-100/20 rounded-full blur-[150px]"></div>
+        </section>
+
+        <!-- Extreme Situation Stress Tests section ends here -->
+
+        <!-- core paper scenarios -->
+        <section id="paper-scenarios" class="bg-white py-32 overflow-hidden relative border-t border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <h5 class="text-[#3C9Bc9] font-bold uppercase tracking-widest text-sm mb-4">Paper Scenarios</h5>
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-8 text-slate-900">Standardized Usage Profiles</h2>
+                    <p class="text-slate-600 text-lg">Every scenario defined in our research is simulated here with live
+                        SOC and thermal telemetry. No scrollers—just pure, structured data.</p>
+                </div>
+
+                <!-- Grid with 'lines' (borders between items) -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-slate-100 gap-px border border-slate-100 rounded-[3rem] overflow-hidden shadow-2xl">
+                    <!-- Idle -->
+                    <div class="bg-white p-10 flex flex-col group transition-all hover:bg-blue-50/30">
+                        <div class="flex items-center gap-4 mb-8">
+                            <span
+                                class="w-10 h-10 rounded-full bg-blue-50 text-[#3C9Bc9] flex items-center justify-center font-bold">01</span>
+                            <h4 class="text-2xl font-bold text-slate-800">Idle / Standby</h4>
+                        </div>
+                        <div
+                            class="overflow-hidden rounded-2xl mb-8 bg-slate-50 p-2 border border-slate-100 transition-transform group-hover:scale-[1.02]">
+                            <img src="img/live_scenario_idle.gif" alt="Idle" class="w-full">
+                        </div>
+                        <p class="text-slate-500 leading-relaxed">Background OS processes only. Predicted TTE: <span
+                                class="text-[#3C9Bc9] font-bold">~22.0 hours</span>. Represents baseline leakage and
+                            periodic sync activity.</p>
+                        <div
+                            class="mt-8 pt-6 border-t border-slate-50 text-xs font-bold uppercase tracking-widest text-slate-400">
+                            Parameter: Minimal Duty Cycle</div>
+                    </div>
+
+                    <!-- Browsing -->
+                    <div class="bg-white p-10 flex flex-col group transition-all hover:bg-teal-50/30">
+                        <div class="flex items-center gap-4 mb-8">
+                            <span
+                                class="w-10 h-10 rounded-full bg-teal-50 text-[#76CBB4] flex items-center justify-center font-bold">02</span>
+                            <h4 class="text-2xl font-bold text-slate-800">Social Browsing</h4>
+                        </div>
+                        <div
+                            class="overflow-hidden rounded-2xl mb-8 bg-slate-50 p-2 border border-slate-100 transition-transform group-hover:scale-[1.02]">
+                            <img src="img/live_scenario_browsing.gif" alt="Browsing" class="w-full">
+                        </div>
+                        <p class="text-slate-500 leading-relaxed">Mixed modem and screen activity. Predicted TTE: <span
+                                class="text-[#76CBB4] font-bold">~6.5 hours</span>. Simulates periodic content fetching
+                            and scrolling.</p>
+                        <div
+                            class="mt-8 pt-6 border-t border-slate-50 text-xs font-bold uppercase tracking-widest text-slate-400">
+                            Parameter: Bursty Modem Usage</div>
+                    </div>
+
+                    <!-- Video -->
+                    <div class="bg-white p-10 flex flex-col group transition-all hover:bg-orange-50/30">
+                        <div class="flex items-center gap-4 mb-8">
+                            <span
+                                class="w-10 h-10 rounded-full bg-orange-50 text-[#F88455] flex items-center justify-center font-bold">03</span>
+                            <h4 class="text-2xl font-bold text-slate-800">Video Streaming</h4>
+                        </div>
+                        <div
+                            class="overflow-hidden rounded-2xl mb-8 bg-slate-50 p-2 border border-slate-100 transition-transform group-hover:scale-[1.02]">
+                            <img src="img/live_scenario_video.gif" alt="Video" class="w-full">
+                        </div>
+                        <p class="text-slate-500 leading-relaxed">Continuous data reception and decoding. Predicted TTE:
+                            <span class="text-[#F88455] font-bold">~5.5 hours</span>. High sustained video processor and
+                            screen draw.
+                        </p>
+                        <div
+                            class="mt-8 pt-6 border-t border-slate-50 text-xs font-bold uppercase tracking-widest text-slate-400">
+                            Parameter: Constant Decoding Load</div>
+                    </div>
+
+                    <!-- Gaming -->
+                    <div class="bg-white p-10 flex flex-col group transition-all hover:bg-red-50/30">
+                        <div class="flex items-center gap-4 mb-8">
+                            <span
+                                class="w-10 h-10 rounded-full bg-red-50 text-[#FC757B] flex items-center justify-center font-bold">04</span>
+                            <h4 class="text-2xl font-bold text-slate-800">High-End Gaming</h4>
+                        </div>
+                        <div
+                            class="overflow-hidden rounded-2xl mb-8 bg-slate-50 p-2 border border-slate-100 transition-transform group-hover:scale-[1.02]">
+                            <img src="img/live_scenario_gaming.gif" alt="Gaming" class="w-full">
+                        </div>
+                        <p class="text-slate-500 leading-relaxed">Max CPU/GPU load loop. Predicted TTE: <span
+                                class="text-[#FC757B] font-bold">~3.0 hours</span>. Non-linear SOC decay due to high
+                            thermal feedback.</p>
+                        <div
+                            class="mt-8 pt-6 border-t border-slate-50 text-xs font-bold uppercase tracking-widest text-slate-400">
+                            Parameter: Peak SoC Consumption</div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="bg-white p-10 flex flex-col group transition-all hover:bg-blue-50/30">
+                        <div class="flex items-center gap-4 mb-8">
+                            <span
+                                class="w-10 h-10 rounded-full bg-blue-50 text-[#3C9Bc9] flex items-center justify-center font-bold">05</span>
+                            <h4 class="text-2xl font-bold text-slate-800">GPS Navigation</h4>
+                        </div>
+                        <div
+                            class="overflow-hidden rounded-2xl mb-8 bg-slate-50 p-2 border border-slate-100 transition-transform group-hover:scale-[1.02]">
+                            <img src="img/live_scenario_navigation.gif" alt="Navigation" class="w-full">
+                        </div>
+                        <p class="text-slate-500 leading-relaxed">Active satellite polling and rendering. Predicted TTE:
+                            <span class="text-[#3C9Bc9] font-bold">~4.8 hours</span>. Combines high display and GPS
+                            module peaks.
+                        </p>
+                        <div
+                            class="mt-8 pt-6 border-t border-slate-50 text-xs font-bold uppercase tracking-widest text-slate-400">
+                            Parameter: High GPS Frequency</div>
+                    </div>
+
+                    <!-- More Parameters Card -->
+                    <div class="bg-[#3C9Bc9] p-10 flex flex-col text-white justify-center">
+                        <h4 class="text-3xl font-bold mb-6">Explore the full Sensitivity Analysis</h4>
+                        <p class="text-blue-50 mb-10 leading-relaxed">We analyzed over <span
+                                class="font-bold underline">12 distinct parameters</span> across hardware modules to
+                            calibrate this model with 98% accuracy.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3 text-sm font-bold">
+                                <i class="fas fa-check-circle text-blue-200"></i>
+                                <span>INTERNAL RESISTANCE ($R_{bat}$)</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm font-bold">
+                                <i class="fas fa-check-circle text-blue-200"></i>
+                                <span>THERMAL RESISTANCE ($R_{th}$)</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm font-bold">
+                                <i class="fas fa-check-circle text-blue-200"></i>
+                                <span>LUMINANCE COEFF ($k_{LCD}/k_{OLED}$)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <style>
+            .no-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+
+            .no-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        </style>
+        </div>
+        </section>
+
+        <!-- Static Image Gallery -->
+        <section id="data" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h5 class="text-[#3C9Bc9] font-bold uppercase tracking-widest text-sm mb-4">Evidence & Data</h5>
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-8 text-slate-900">The Dataset Gallery</h2>
+                <p class="text-slate-600 text-lg">Explore all theoretical and simulation output generated by our SOC-T
+                    model.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl transition hover:-translate-y-2">
+                    <img src="img/live_screen_sweep.gif" alt="Screen Power"
+                        class="w-full rounded-2xl mb-6 border border-slate-100 object-contain h-[200px]">
+                    <h4 class="font-bold text-lg mb-2 text-[#3C9Bc9]">Display Module Dynamics</h4>
+                    <p class="text-sm text-slate-500">Live Power draw vs. Screen Brightness (Luminance).</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl transition hover:-translate-y-2">
+                    <img src="img/live_processor_sweep.gif" alt="Processor"
+                        class="w-full rounded-2xl mb-6 border border-slate-100 object-contain h-[200px]">
+                    <h4 class="font-bold text-lg mb-2 text-[#76CBB4]">Processor Load Curve</h4>
+                    <p class="text-sm text-slate-500">Live correlation between CPU utlization and power.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl transition hover:-translate-y-2">
+                    <img src="img/live_soc_temp.gif" alt="System Dynamics"
+                        class="w-full rounded-2xl mb-6 border border-slate-100 object-contain h-[200px]">
+                    <h4 class="font-bold text-lg mb-2 text-[#FDCA93]">Stress-Thermal Coupling</h4>
+                    <p class="text-sm text-slate-500">Comparison of SOC decay and thermal saturation across different
+                        scenarios.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl transition hover:-translate-y-2">
+                    <img src="img/live_monte_carlo.gif" alt="Monte Carlo"
+                        class="w-full rounded-2xl mb-6 border border-slate-100 object-contain h-[200px]">
+                    <h4 class="font-bold text-lg mb-2 text-[#FC757B]">Confidence Bands</h4>
+                    <p class="text-sm text-slate-500">Live 95% confidence interval for SOC decay.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl transition hover:-translate-y-2">
+                    <img src="img/MC_TTE_Boxplot.png" alt="TTE Boxplot"
+                        class="w-full rounded-2xl mb-6 border border-slate-100 object-contain h-[200px]">
+                    <h4 class="font-bold text-lg mb-2 text-[#3C9Bc9]">TTE Distributions</h4>
+                    <p class="text-sm text-slate-500">Expected battery life spread across scenarios.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl transition hover:-translate-y-2">
+                    <img src="img/fig09_system_dynamics.png" alt="Full Dynamics"
+                        class="w-full rounded-2xl mb-6 border border-slate-100 object-contain h-[200px]">
+                    <h4 class="font-bold text-lg mb-2 text-[#76CBB4]">Full System State</h4>
+                    <p class="text-sm text-slate-500">Integrated view of SOC, Temp, and Power.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Optimization / Tips -->
+        <section id="optimization" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+            <div class="bg-[#3C9Bc9] rounded-[4rem] p-12 md:p-24 text-white shadow-3xl overflow-hidden relative">
+                <div class="relative z-10">
+                    <div class="text-center max-w-3xl mx-auto mb-20">
+                        <h2 class="text-4xl md:text-5xl font-extrabold mb-8 text-white">How to double your longevity.
+                        </h2>
+                        <p class="text-blue-50 text-lg">Derived from mathematical sensitivity analysis: the top 3
+                            high-impact strategies.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                        <div class="space-y-6">
+                            <div class="text-4xl font-bold opacity-30 italic text-white">01</div>
+                            <h4 class="text-2xl font-bold text-white">Luminance Optimization</h4>
+                            <p class="text-blue-50 leading-relaxed text-sm">Capping brightness at 65% and using OLED
+                                Dark Mode reduces the dominant power factor by 18-25%.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="text-4xl font-bold opacity-30 italic text-white">02</div>
+                            <h4 class="text-2xl font-bold text-white">Thermal Hygiene</h4>
+                            <p class="text-blue-50 leading-relaxed text-sm">Reducing ambient temperature or using
+                                high-dissipation cases prevents the internal resistance feedback loop.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="text-4xl font-bold opacity-30 italic text-white">03</div>
+                            <h4 class="text-2xl font-bold text-white">Network Discipline</h4>
+                            <p class="text-blue-50 leading-relaxed text-sm">Limiting GPS polling frequency and
+                                preferring Wi-Fi over Cellular saves up to 0.5W of static draw.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decoration -->
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-white/10 rounded-full blur-[80px]"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 text-slate-500 py-24 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="text-2xl font-bold flex items-center justify-center gap-3 mb-10">
+                <div class="bg-[#3C9Bc9] text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-md">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <span class="tracking-tight text-slate-800">MCM2026-<span class="text-[#3C9Bc9]">2629276</span></span>
+            </div>
+            <div
+                class="flex justify-center space-x-12 mb-12 font-bold text-sm uppercase tracking-widest text-slate-400">
+                <a href="#summary" class="hover:text-[#3C9Bc9] transition">Summary</a>
+                <a href="#model" class="hover:text-[#3C9Bc9] transition">Model</a>
+                <a href="#simulations" class="hover:text-[#3C9Bc9] transition">Live Demo</a>
+                <a href="#data" class="hover:text-[#3C9Bc9] transition">Data</a>
+            </div>
+            <div class="border-t border-slate-200 pt-12 text-sm text-slate-400">
+                <p class="mb-2 uppercase tracking-tighter font-bold">MCM/ICM 2026 | Team #2629276</p>
+                <p class="opacity-70">Smartphone Power Consumption Modeling Project</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll implementation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
